@@ -2,6 +2,50 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## What this project have
+
+### Components
+
+- [ ] Logo
+- [ ] Carousel
+- [ ] Card
+- [ ] Button
+- [ ] Connect message
+- [ ] Create New Post Button
+- [ ] Publish Post Form
+- [ ] Login Form
+  
+### Pages
+
+- [ ] Home page
+- [ ] Post detail page
+- [ ] Profile page
+  
+### Unit Test
+
+- [ ] Logo
+  - [ ] Should be created
+- [ ] Carousel
+  - [ ] Should be created
+- [ ] Card
+  - [ ] Should be created
+- [ ] Button
+  - [ ] Should be created
+- [ ] Connect message
+  - [ ] Should be created
+- [ ] Create New Post Button
+  - [ ] Should be created
+- [ ] Publish Post Form
+  - [ ] Should be created
+- [ ] Login Form
+  - [ ] Should be created
+
+### Test E2E
+
+- [ ] Home page
+- [ ] Post detail page
+- [ ] Profile page
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
