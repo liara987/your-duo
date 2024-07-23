@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Header from '../components/Header.vue'
+import Slider from '../components/Slider.vue'
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import Header from '../components/Header.vue'
       <h1 class="find-duo__title">Find your duo here!</h1>
       <h2 class="find-duo__subtitle">Select a game you want to play...</h2>
     </section>
+    <Slider />
   </main>
 </template>
 
@@ -34,13 +36,13 @@ main {
       line-height: 38px;
       letter-spacing: -0.47px;
     }
-    
+
     &__subtitle {
       font-size: 1rem;
       font-weight: 400;
       color: var(--color-subtext);
-      
-      line-height: 26px;      
+
+      line-height: 26px;
       letter-spacing: -0.18px;
     }
   }
