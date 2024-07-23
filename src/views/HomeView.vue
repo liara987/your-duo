@@ -23,9 +23,10 @@ main {
   Header {
     margin-top: 4.625rem;
   }
-
+  
   .find-duo {
     margin-top: 3rem;
+    margin-bottom: 1.25rem;
     display: flex;
     align-items: start;
     flex-direction: column;
