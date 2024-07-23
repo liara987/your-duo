@@ -35,7 +35,7 @@
     </v-expand-transition>
   </v-sheet>
 </template>
-<script>
+<script lang="ts">
 export default {
   data: () => ({
     model: null
