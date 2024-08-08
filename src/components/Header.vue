@@ -2,15 +2,6 @@
 
 <template>
   <header class="c-header">
-    <img alt="Vue logo" class="c-header__logo" src="@/assets/logo.png" width="125" height="125" />
+    <img alt="Vue logo" src="@/assets/logo.png" width="120" height="120" />
   </header>
 </template>
-
-<style lang="scss">
-.c-header {
-  &__logo {
-    width: 120px;
-    height: 120px;
-  }
-}
-</style>
