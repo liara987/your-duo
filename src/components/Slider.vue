@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import data from '../../database.json'
+
+interface cardType {
+  title: string
+  src: string
+  description: string
+}
+
+const model = defineModel()
+const cards: cardType[] = data
+</script>
+
 <template>
   <v-sheet class="rounded-lg" elevation="8" max-width="100vw" rounded-xl centerjustify-center>
     <v-slide-group v-model="model" show-arrows center-active>
@@ -36,22 +49,10 @@
         <div class="d-flex flex-column fill-height align-center justify-center">
           <h3 class="text-h6">{{ cards[Number(model)].title }}</h3>
           <p class="text-body-1 pa-6">
-            {{ cards[Number(model)].title }} - {{ cards[Number(model)].description }}
+            {{ cards[Number(model)].description }}
           </p>
         </div>
       </v-sheet>
     </v-expand-transition>
   </v-sheet>
 </template>
-
-<script setup lang="ts">
-import data from '../../database.json'
-
-interface cardType {
-  title: string
-  src: string
-  description: string
-}
-const model = defineModel()
-const cards: cardType[] = data
-</script>
