@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
 import data from '../../database.json'
 
 interface cardType {
@@ -9,18 +10,20 @@ interface cardType {
 
 const model = defineModel()
 const cards: cardType[] = data
+
+const { smAndUp } = useDisplay()
 </script>
 
 <template>
-  <v-sheet class="rounded-lg" elevation="8" max-width="100%" rounded-xl center justify-center>
-    <v-slide-group class="p-10" v-model="model" show-arrows center-active>
-      <v-slide-group-item v-for="card in cards" v-slot="{ isSelected, toggle, selectedClass }">
+  <v-sheet width="100%" center justify-center>
+    <v-slide-group v-model="model" show-arrows center-active>
+      <v-slide-group-item v-for="card in cards" v-slot="{ toggle, selectedClass }">
         <v-card
           class="bg-primary"
-          :class="['ma-3', selectedClass]"
-          color="grey-lighten-1"
-          height="290"
-          width="200"
+          :class="['ma-sm-3 ma-2', selectedClass]"
+          color="grey-lighten-1"          
+          :height="smAndUp ? 290 : 270"
+          :width="smAndUp ? 200 : 180"
           rounded-lg
           @click="toggle"
         >
@@ -33,7 +36,7 @@ const cards: cardType[] = data
             width="100%"
             cover
           >
-            <v-card-title class="text-white" v-text="card.title"></v-card-title>
+            <v-card-title class="text-white text-sm-h6 text-subtitle-1" v-text="card.title"></v-card-title>
             <template v-slot:placeholder>
               <div class="d-flex align-center justify-center fill-height">
                 <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
@@ -47,8 +50,8 @@ const cards: cardType[] = data
     <v-expand-transition>
       <v-sheet v-if="model != null" height="auto">
         <div class="d-flex flex-column fill-height align-center justify-center">
-          <h3 class="text-h6">{{ cards[Number(model)].title }}</h3>
-          <p class="text-body-1 pa-6">
+          <h3 class="text-sm-h6 text-subtitle-1 mt-sm-3">{{ cards[Number(model)].title }}</h3>
+          <p class="text-subtitle-2 text-sm-body-1 pa-3 pa-sm-6">
             {{ cards[Number(model)].description }}
           </p>
         </div>
@@ -59,7 +62,11 @@ const cards: cardType[] = data
 
 <style>
 div.v-sheet {
-  background: transparent;  
+  background: transparent;
   box-shadow: none !important;
+}
+
+.v-card-title {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 67.08%);
 }
 </style>

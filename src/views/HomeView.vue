@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import Banner from '@/components/Banner.vue'
-import Header from '../components/Header.vue'
+import Logo from '../components/Logo.vue'
 import Slider from '../components/Slider.vue'
 </script>
 
 <template>
   <main class="d-flex flex-column align-center">
-    <Header class="mt-5" />
-    <section class="mb-5 d-flex align-center flex-column">
-      <h1 class="text-h4 font-weight-black">Find your duo here!</h1>
-      <h2 class="text-subtitle-1 text-color-subtext">Select a game you want to play...</h2>
+    <Logo class="mt-3 mt-sm-5" />
+    <section class="mb-3 mb-sm-5 d-flex align-center flex-column">
+      <h1 class="text-h6 text-sm-h4 font-weight-black">
+        Find your duo here!
+      </h1>
+      <h2 class="text-subtitle-1 text-sm-h6 text-color-subtext">
+        Select a game you want to play...
+      </h2>
     </section>
     <section class="d-flex justify-center mb-8 w-100">
       <Slider />
@@ -21,18 +25,4 @@ import Slider from '../components/Slider.vue'
 </template>
 
 <style lang="scss">
-.title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 38px;
-  letter-spacing: -0.47px;
-}
-
-.subtitle {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-subtext);
-  line-height: 26px;
-  letter-spacing: -0.18px;
-}
 </style>
