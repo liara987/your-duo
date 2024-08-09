@@ -1,5 +1,13 @@
 @import './base.css';
 
+@font-face {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./fonts/Roboto-Light.ttf') format('truetype');
+}
+
 #app {
   margin: 0 auto;
   font-weight: normal;

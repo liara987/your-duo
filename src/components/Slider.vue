@@ -12,8 +12,8 @@ const cards: cardType[] = data
 </script>
 
 <template>
-  <v-sheet class="rounded-lg" elevation="8" max-width="100vw" rounded-xl centerjustify-center>
-    <v-slide-group v-model="model" show-arrows center-active>
+  <v-sheet class="rounded-lg" elevation="8" max-width="100%" rounded-xl center justify-center>
+    <v-slide-group class="p-10" v-model="model" show-arrows center-active>
       <v-slide-group-item v-for="card in cards" v-slot="{ isSelected, toggle, selectedClass }">
         <v-card
           class="bg-primary"
@@ -56,3 +56,10 @@ const cards: cardType[] = data
     </v-expand-transition>
   </v-sheet>
 </template>
+
+<style>
+div.v-sheet {
+  background: transparent;  
+  box-shadow: none !important;
+}
+</style>
