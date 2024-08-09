@@ -19,7 +19,7 @@ const { smAndUp } = useDisplay()
     <template v-slot:actions>
       <div class="d-flex align-center justify-center w-100 mt-2 mt-sm-0">
         <v-btn
-          class="text-subtitle-2 text-subtitle-sm-1"
+          class="text-subtitle-1"
           :size="smAndUp ? 'x-large' : 'large'"
           color="primary"
           prepend-icon="mdi-magnify-plus-outline"
