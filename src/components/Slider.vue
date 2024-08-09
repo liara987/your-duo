@@ -36,7 +36,7 @@ const { smAndUp } = useDisplay()
             width="100%"
             cover
           >
-            <v-card-title class="text-white text-sm-h6 text-subtitle-1" v-text="card.title"></v-card-title>
+            <v-card-title class="px-2 py-1 px-sm-4 py-sm-2 text-white text-sm-h6 text-subtitle-1 align-content-end" v-text="card.title"></v-card-title>
             <template v-slot:placeholder>
               <div class="d-flex align-center justify-center fill-height">
                 <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
@@ -67,6 +67,7 @@ div.v-sheet {
 }
 
 .v-card-title {
+  height: 4rem;  
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 67.08%);
 }
 </style>
