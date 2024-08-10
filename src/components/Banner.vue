@@ -33,18 +33,20 @@ const { smAndUp } = useDisplay()
 </template>
 
 <style lang="scss">
-div.v-banner-actions {
-  margin: 0 !important;
-  height: 60px;
-  width: 100%;
-}
+div {
+  .v-banner-actions {
+    margin: 0 !important;
+    height: 60px;
+    width: 100%;
+  }
 
-div.v-banner {
-  background: linear-gradient(
-    90deg,
-    rgba(149, 114, 252, 1) 0%,
-    rgba(67, 231, 173, 1) 51%,
-    rgba(225, 213, 93, 1) 100%
-  );
+  .v-banner {
+    background: linear-gradient(
+      90deg,
+      rgba(149, 114, 252, 1) 0%,
+      rgba(67, 231, 173, 1) 51%,
+      rgba(225, 213, 93, 1) 100%
+    );
+  }
 }
 </style>
