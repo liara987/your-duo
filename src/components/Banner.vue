@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useDisplay } from 'vuetify'
-
-const { smAndUp } = useDisplay()
+import FormNewGame from '@/components/FormNewGame.vue';
 </script>
 
 <template>
@@ -17,16 +15,8 @@ const { smAndUp } = useDisplay()
       </h6>
     </v-banner-text>
     <template v-slot:actions>
-      <div class="d-flex align-center justify-center w-100 mt-2 mt-sm-0">
-        <v-btn
-          class="text-subtitle-1"
-          :size="smAndUp ? 'x-large' : 'large'"
-          color="primary"
-          prepend-icon="mdi-magnify-plus-outline"
-          variant="flat"
-        >
-          Publicar anúncio
-        </v-btn>
+      <div class="d-flex align-center justify-center w-100 mt-2 mt-sm-0">        
+        <FormNewGame/>
       </div>
     </template>
   </v-banner>

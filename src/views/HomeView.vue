@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Banner from '@/components/Banner.vue'
-import Logo from '../components/Logo.vue'
-import Slider from '../components/Slider.vue'
+import Logo from '@/components/Logo.vue'
+import Slider from '@/components/Slider.vue'
 </script>
 
 <template>
@@ -20,9 +20,8 @@ import Slider from '../components/Slider.vue'
     </section>
     <section class="w-100 mb-16">
       <Banner />
-    </section>
+    </section>    
   </main>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
