@@ -9,9 +9,9 @@ import FormNewGame from '@/components/FormNewGame.vue';
     class="d-flex flex-column flex-sm-row justify-space-between px-3 px-sm-8 py-2 py-sm-6 rounded-lg"
   >
     <v-banner-text class="pr-0">
-      <h4 class="font-weight-black text-subtitle-1 text-sm-h5">Não encontrou seu duo?</h4>
+      <h4 class="font-weight-black text-subtitle-1 text-sm-h5">Didn't find your duo?</h4>
       <h6 class="text-subtitle-2 text-sm-subtitle-2">
-        Publique um anúncio para encontrar novos players!
+        Publish an announce to find new players!
       </h6>
     </v-banner-text>
     <template v-slot:actions>

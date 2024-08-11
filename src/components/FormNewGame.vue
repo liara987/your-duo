@@ -3,7 +3,6 @@ import { useDisplay } from 'vuetify'
 
 const dialog = defineModel<boolean>({ default: false })
 const { smAndUp } = useDisplay()
-
 </script>
 
 <template>
@@ -18,19 +17,19 @@ const { smAndUp } = useDisplay()
           variant="flat"
           v-bind="activatorProps"
         >
-          Publicar anúncio
+          Announce a duo
         </v-btn>
       </template>
 
       <v-card>
         <template v-slot:title>
-          <span class="font-weight-black text-h5" background="red">Publique um anúncio</span>
+          <span class="font-weight-black text-h5" background="red">Publish an announce</span>
         </template>
         <v-card-text>
           <v-row dense>
             <v-col cols="12">
               <v-text-field
-                label="Nome do Jogo*"
+                label="*Game name"
                 required
                 clearable
                 variant="underlined"
@@ -40,7 +39,7 @@ const { smAndUp } = useDisplay()
 
             <v-col cols="12">
               <v-text-field
-                label="Qual seu nome? (nickname)*"
+                label="*What is your nickname?"
                 required
                 clearable
                 variant="underlined"
@@ -50,27 +49,34 @@ const { smAndUp } = useDisplay()
 
             <v-col cols="12">
               <v-text-field
-                label="A quanto tempo joga?"
+                label="How long do you play?"
                 clearable
                 variant="underlined"
-                placeholder="3 Anos"
+                placeholder="3 Years or 2 weeks etc... "
               ></v-text-field>
             </v-col>
 
             <v-col cols="12">
               <v-text-field
-                label="Rede social para contato*"
-                required
+                label="Social media contact"
                 clearable
                 variant="underlined"
-                placeholder="discord, steam, twitch etc..."
+                placeholder="discord or steam or twitch etc..."
               ></v-text-field>
             </v-col>
 
             <v-col cols="12" sm="9">
               <v-autocomplete
-                :items="['sexta', 'sabado', 'domingo', 'segunda', 'terça', 'quarta', 'quinta']"
-                label="Dias da semana que joga"
+                :items="[
+                  'Friday',
+                  'Saturday',
+                  'Sunday',
+                  'Monday',
+                  'Tuesday',
+                  'Wednesday',
+                  'Thursday'
+                ]"
+                label="Days that you play"
                 variant="underlined"
                 multiple
               ></v-autocomplete>
@@ -78,7 +84,7 @@ const { smAndUp } = useDisplay()
 
             <v-col cols="12" sm="3">
               <v-text-field
-                label="Qual horário joga?"
+                label="When do you play?"
                 hide-details="auto"
                 model-value="00:00:00"
                 variant="underlined"
@@ -94,7 +100,7 @@ const { smAndUp } = useDisplay()
           <v-spacer></v-spacer>
 
           <v-btn
-            text="Cancelar"
+            text="Cancel"
             variant="flat"
             @click="dialog = false"
             color="color-subtext"
@@ -103,7 +109,6 @@ const { smAndUp } = useDisplay()
             class="text-subtitle-1 font-weight-medium"
           ></v-btn>
 
-          <!-- <v-btn color="primary" text="Save" variant="tonal" @click="dialog = false"></v-btn> -->
           <v-btn
             @click="dialog = false"
             class="text-subtitle-1 ml-4 font-weight-medium"
@@ -112,7 +117,7 @@ const { smAndUp } = useDisplay()
             variant="flat"
             size="large"
             rounded="x-large"
-            text="Encontrar duo"
+            text="Find duo"
             disabled
           ></v-btn>
         </v-card-actions>
