@@ -1,8 +1,30 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify'
+import { onBeforeMount, ref } from 'vue'
+import axios from 'axios'
 
+const API_KEY = import.meta.env.VITE_GIANT_BOMB_REG_TOKEN
 const dialog = defineModel<boolean>({ default: false })
 const { smAndUp } = useDisplay()
+const posts = ref()
+
+onBeforeMount(async () => {
+  const req = await axios.get(`
+  https://www.giantbomb.com/api/releases/?
+  api_key=${API_KEY}&
+  format=json&
+   
+  sort=game:desc&
+  platforms=94&
+  field_list=name,image&
+  resource_type=game
+  `)
+  posts.value = req.data.results
+
+  posts.value.map((post: any) => {
+    console.log(post.name,post.image)
+  })
+})
 </script>
 
 <template>

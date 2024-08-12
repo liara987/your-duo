@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify'
+import { ref } from 'vue'
 import data from '../../database.json'
 
 interface cardType {
@@ -9,8 +10,7 @@ interface cardType {
 }
 
 const model = defineModel()
-const cards: cardType[] = data
-
+const cards = ref<cardType[]>(data)
 const { smAndUp } = useDisplay()
 </script>
 
@@ -21,7 +21,7 @@ const { smAndUp } = useDisplay()
         <v-card
           class="bg-primary"
           :class="['ma-sm-3 ma-2', selectedClass]"
-          color="grey-lighten-1"          
+          color="grey-lighten-1"
           :height="smAndUp ? 290 : 270"
           :width="smAndUp ? 200 : 180"
           rounded-lg
@@ -36,7 +36,10 @@ const { smAndUp } = useDisplay()
             width="100%"
             cover
           >
-            <v-card-title class="px-2 py-1 px-sm-4 py-sm-2 text-white text-sm-h6 text-subtitle-1 align-content-end" v-text="card.title"></v-card-title>
+            <v-card-title
+              class="px-2 py-1 px-sm-4 py-sm-2 text-white text-sm-h6 text-subtitle-1 align-content-end"
+              v-text="card.title"
+            ></v-card-title>
             <template v-slot:placeholder>
               <div class="d-flex align-center justify-center fill-height">
                 <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
@@ -67,7 +70,7 @@ div.v-sheet {
 }
 
 .v-card-title {
-  height: 4rem;  
+  height: 4rem;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 67.08%);
 }
 </style>
