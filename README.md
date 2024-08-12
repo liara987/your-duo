@@ -2,25 +2,49 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## screenshots
+
+### home mobile
+
+![home-mobile](./screens/home-mobile.png)
+
+### home tablet
+
+![home-tablet](./screens/home-tablet.png)
+
+### home desktop
+
+![home-desktop](./screens/home-desktop.png)
+
+### form mobile
+
+![form-mobile](./screens/form-mobile.png)
+
+### form desktop
+
+![form-desktop](./screens/form-desktop.png)
+
 ## What this project have
 
 ### Components
 
-- [ ] Logo
-- [ ] Carousel
-- [ ] Card
-- [ ] Button
-- [ ] Connect message
-- [ ] Create New Post Button
-- [ ] Publish Post Form
-- [ ] Login Form
-  
+- [x] Logo
+- [x] Carousel
+- [x] Card
+- [x] Button
+- [x] Connect message
+- [x] Create New Post Button
+- [x] Publish Post Form
+- [ ] Validate form fields
+- [ ] Add a post to list
+- [ ] List how much posts have
+
 ### Pages
 
 - [ ] Home page
 - [ ] Post detail page
 - [ ] Profile page
-  
+
 ### Unit Test
 
 - [ ] Logo

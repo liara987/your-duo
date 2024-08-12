@@ -22,7 +22,7 @@ onBeforeMount(async () => {
   posts.value = req.data.results
 
   posts.value.map((post: any) => {
-    console.log(post.name,post.image)
+    // console.log(post.name,post.image)
   })
 })
 </script>
