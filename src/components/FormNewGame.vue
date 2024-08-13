@@ -45,12 +45,12 @@ onBeforeMount(async () => {
 
       <v-card>
         <template v-slot:title>
-          <span class="font-weight-black text-h5" background="red">Publish an announce</span>
+          <span class="font-weight-black text-h6 text-sm-h5" background="red">Publish an announce</span>
         </template>
         <v-card-text>
           <v-row dense>
             <v-col cols="12">
-              <v-text-field
+              <v-text-field                
                 label="*Game name"
                 required
                 clearable
@@ -118,9 +118,7 @@ onBeforeMount(async () => {
 
         <v-divider></v-divider>
 
-        <v-card-actions>
-          <v-spacer></v-spacer>
-
+        <v-card-actions class="d-flex justify-center justify-sm-end">          
           <v-btn
             text="Cancel"
             variant="flat"
