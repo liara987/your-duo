@@ -133,13 +133,14 @@ function clearArray(): string[] {
             </v-col>
 
             <v-label text="How long do you play?" class="pl-1"></v-label>
-            <v-col cols="12" class="d-flex">
-              <v-col cols="6">
+            <v-col cols="12" class="d-flex" style="height: 80px;">
+              <v-col cols="6" class="pl-0">
                 <v-select
                   v-model="formDuo.howLongPlaysQuantity"
                   :items="['1', '2', '3', '4', '5', '5+']"
                   label="Quantity"
                   variant="underlined"
+                  density="comfortable"
                 ></v-select>
               </v-col>
               <v-col cols="6">
@@ -148,11 +149,13 @@ function clearArray(): string[] {
                   :items="['day', 'week', 'month', 'year']"
                   label="Time"
                   variant="underlined"
+                  density="comfortable"
                 ></v-select>
               </v-col>
             </v-col>
 
-            <v-col cols="12" sm="9">
+            <div class="d-flex align-center"></div>
+            <v-col cols="12" sm="9" class="d-flex align-center">
               <v-autocomplete
                 v-model="formDuo.daysPlay"
                 :items="[
