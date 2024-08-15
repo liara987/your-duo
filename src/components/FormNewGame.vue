@@ -34,7 +34,6 @@ const formDuo = ref<Props>({
   timePlay: undefined
 })
 
-const search = ref(null)
 const rules = [
   (value: any) => {
     if (value) {
@@ -109,37 +108,28 @@ function clearArray(): string[] {
           <v-row dense>
             <v-col cols="12">
               <v-combobox
-                v-model:search="search"
-                :hide-no-data="false"
                 v-model="formDuo.gameName"
+                :items="formDuo.gameList"
+                :rules="rules"
                 label="* Game name"
                 variant="underlined"
                 placeholder="Valorant"
-                :items="formDuo.gameList"
-                :rules="rules"
-                auto-select-first
+                hide-no-data
+                hide-selected
                 clearable
                 required
               >
-                <template v-slot:no-data>
-                  <v-list-item>
-                    <v-list-item-title>
-                      No results matching "<strong>{{ search }}</strong
-                      >". Press <kbd>enter</kbd> to create a new one
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
               </v-combobox>
             </v-col>
 
             <v-col cols="12">
               <v-text-field
+                v-model="formDuo.nickName"
+                :rules="rules"
                 label="* What is your nickname?"
-                clearable
                 variant="underlined"
                 placeholder="NightShadow8742"
-                :rules="rules"
-                v-model="formDuo.nickName"
+                clearable
                 required
               ></v-text-field>
             </v-col>
@@ -148,24 +138,25 @@ function clearArray(): string[] {
             <v-col cols="12" class="d-flex">
               <v-col cols="6">
                 <v-select
-                  label="Quantity"
-                  :items="['1', '2', '3', '4', '5', '5+']"
-                  variant="underlined"
                   v-model="formDuo.howLongPlaysQuantity"
+                  :items="['1', '2', '3', '4', '5', '5+']"
+                  label="Quantity"
+                  variant="underlined"
                 ></v-select>
               </v-col>
               <v-col cols="6">
                 <v-select
-                  label="Time"
-                  :items="['day', 'week', 'month', 'year']"
-                  variant="underlined"
                   v-model="formDuo.howLongPlaysTime"
+                  :items="['day', 'week', 'month', 'year']"
+                  label="Time"
+                  variant="underlined"
                 ></v-select>
               </v-col>
             </v-col>
 
             <v-col cols="12" sm="9">
               <v-autocomplete
+                v-model="formDuo.daysPlay"
                 :items="[
                   'Friday',
                   'Saturday',
@@ -177,28 +168,27 @@ function clearArray(): string[] {
                 ]"
                 label="Days that you play"
                 variant="underlined"
-                v-model="formDuo.daysPlay"
                 multiple
               ></v-autocomplete>
             </v-col>
 
             <v-col cols="12" sm="3">
               <v-text-field
+                v-model="formDuo.timePlay"
                 label="When do you play?"
                 hide-details="auto"
                 variant="underlined"
                 type="time"
-                v-model="formDuo.timePlay"
               ></v-text-field>
             </v-col>
 
             <v-col cols="12">
               <v-text-field
+                v-model="formDuo.socialMedia"
                 label="Social media contact"
-                clearable
                 variant="underlined"
                 placeholder="discord or steam or twitch etc..."
-                v-model="formDuo.socialMedia"
+                clearable
               ></v-text-field>
             </v-col>
           </v-row>
@@ -208,9 +198,9 @@ function clearArray(): string[] {
 
         <v-card-actions class="d-flex justify-center justify-sm-end">
           <v-btn
+            @click="dialog = false"
             text="Cancel"
             variant="flat"
-            @click="dialog = false"
             color="color-subtext"
             size="large"
             rounded="x-large"
@@ -218,6 +208,8 @@ function clearArray(): string[] {
           ></v-btn>
 
           <v-btn
+            @click="dialog = false"
+            :disabled="formDuo.disabled"
             class="text-subtitle-1 ml-4 font-weight-medium"
             color="primary"
             prepend-icon="mdi-gamepad-variant-outline"
@@ -225,8 +217,6 @@ function clearArray(): string[] {
             size="large"
             rounded="x-large"
             text="Find duo"
-            @click="dialog = false"
-            :disabled="formDuo.disabled"
           ></v-btn>
         </v-card-actions>
       </v-card>
