@@ -49,8 +49,6 @@ const rules = [
 watch(
   () => formDuo.value.gameName as String,
   (newVal) => {
-    console.log(newVal)
-
     updateModel(newVal)
   }
 )
