@@ -3,39 +3,60 @@ import { ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import _debounce from 'lodash/debounce'
 import axios from 'axios'
-
 const API_KEY = import.meta.env.VITE_GIANT_BOMB_REG_TOKEN
-const dialog = defineModel<boolean>({ default: false })
-const { smAndUp } = useDisplay()
-const games = ref<[{ name: string }]>([{ name: '' }])
-const disabled = ref<boolean>(false)
-const gameName = ref<string>()
-const nickName = ref<string>()
-const howLongPlaysQuantity = ref<string>()
-const howLongPlaysTime = ref<string>()
-const socialMedia = ref<string>()
-const daysPlay = ref<[]>()
-const gameList = ref<string[]>([''])
-const timePlay = ref<string>('00:00:00')
 
+const { smAndUp } = useDisplay()
+const dialog = defineModel<boolean>({ default: false })
+
+interface Props {
+  games: [{ name: string }]
+  disabled: boolean
+  gameName?: string
+  nickName: string
+  howLongPlaysQuantity?: string
+  howLongPlaysTime?: string
+  socialMedia: string
+  daysPlay?: [string]
+  gameList: string[]
+  timePlay?: [string]
+}
+
+const formDuo = ref<Props>({
+  games: [{ name: '' }],
+  disabled: false,
+  gameName: undefined,
+  nickName: '',
+  howLongPlaysQuantity: undefined,
+  howLongPlaysTime: undefined,
+  socialMedia: '',
+  daysPlay: undefined,
+  gameList: [''],
+  timePlay: undefined
+})
+
+const search = ref(null)
 const rules = [
   (value: any) => {
     if (value) {
-      disabled.value = false
+      formDuo.value.disabled = false
       return true
     } else {
-      disabled.value = true
+      formDuo.value.disabled = true
       return 'This field is required.'
     }
   }
 ]
 
-watch(gameName, (newVal) => {
-  updateModel(newVal)
-})
+watch(
+  () => formDuo.value.gameName as String,
+  (newVal) => {
+    console.log(newVal)
+
+    updateModel(newVal)
+  }
+)
 
 const updateModel = _debounce(async (newVal) => {
-  console.log(newVal)
   const req = await axios.get(`
           https://www.giantbomb.com/api/search/?
           api_key=${API_KEY}&
@@ -46,14 +67,22 @@ const updateModel = _debounce(async (newVal) => {
           filter=platforms:94&
           query=${newVal}
           `)
-  games.value = req.data.results
-  gameList.value = []
-  games.value.map((game: { name: string }) => {
-    gameList.value.push(game.name)
+  formDuo.value.games = req.data.results
+  formDuo.value.gameList = clearArray()
+  formDuo.value.games.map((game: { name: string }) => {
+    formDuo.value.gameList.push(game.name)
   })
 
-  gameList.value = gameList.value.filter((item, index) => gameList.value.indexOf(item) === index)
+  formDuo.value.gameList = removeDuplicatedNames(formDuo.value.gameList)
 }, 500)
+
+function removeDuplicatedNames(gameData: string[]): string[] {
+  return gameData.filter((item, index) => gameData.indexOf(item) === index)
+}
+
+function clearArray(): string[] {
+  return []
+}
 </script>
 
 <template>
@@ -80,15 +109,27 @@ const updateModel = _debounce(async (newVal) => {
           <v-row dense>
             <v-col cols="12">
               <v-combobox
-                v-model="gameName"
+                v-model:search="search"
+                :hide-no-data="false"
+                v-model="formDuo.gameName"
                 label="* Game name"
                 variant="underlined"
                 placeholder="Valorant"
-                :items="gameList"
-                :rules="rules"                
+                :items="formDuo.gameList"
+                :rules="rules"
+                auto-select-first
                 clearable
                 required
-              ></v-combobox>
+              >
+                <template v-slot:no-data>
+                  <v-list-item>
+                    <v-list-item-title>
+                      No results matching "<strong>{{ search }}</strong
+                      >". Press <kbd>enter</kbd> to create a new one
+                    </v-list-item-title>
+                  </v-list-item>
+                </template>
+              </v-combobox>
             </v-col>
 
             <v-col cols="12">
@@ -98,7 +139,7 @@ const updateModel = _debounce(async (newVal) => {
                 variant="underlined"
                 placeholder="NightShadow8742"
                 :rules="rules"
-                v-model="nickName"
+                v-model="formDuo.nickName"
                 required
               ></v-text-field>
             </v-col>
@@ -110,7 +151,7 @@ const updateModel = _debounce(async (newVal) => {
                   label="Quantity"
                   :items="['1', '2', '3', '4', '5', '5+']"
                   variant="underlined"
-                  v-model="howLongPlaysQuantity"
+                  v-model="formDuo.howLongPlaysQuantity"
                 ></v-select>
               </v-col>
               <v-col cols="6">
@@ -118,19 +159,9 @@ const updateModel = _debounce(async (newVal) => {
                   label="Time"
                   :items="['day', 'week', 'month', 'year']"
                   variant="underlined"
-                  v-model="howLongPlaysTime"
+                  v-model="formDuo.howLongPlaysTime"
                 ></v-select>
               </v-col>
-            </v-col>
-
-            <v-col cols="12">
-              <v-text-field
-                label="Social media contact"
-                clearable
-                variant="underlined"
-                placeholder="discord or steam or twitch etc..."
-                v-model="socialMedia"
-              ></v-text-field>
             </v-col>
 
             <v-col cols="12" sm="9">
@@ -146,7 +177,7 @@ const updateModel = _debounce(async (newVal) => {
                 ]"
                 label="Days that you play"
                 variant="underlined"
-                v-model="daysPlay"
+                v-model="formDuo.daysPlay"
                 multiple
               ></v-autocomplete>
             </v-col>
@@ -157,7 +188,17 @@ const updateModel = _debounce(async (newVal) => {
                 hide-details="auto"
                 variant="underlined"
                 type="time"
-                v-model="timePlay"
+                v-model="formDuo.timePlay"
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="12">
+              <v-text-field
+                label="Social media contact"
+                clearable
+                variant="underlined"
+                placeholder="discord or steam or twitch etc..."
+                v-model="formDuo.socialMedia"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -185,13 +226,14 @@ const updateModel = _debounce(async (newVal) => {
             rounded="x-large"
             text="Find duo"
             @click="dialog = false"
-            :disabled="disabled"
+            :disabled="formDuo.disabled"
           ></v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
 </template>
+
 <style lang="scss">
 div.v-card-title {
   background: none;
