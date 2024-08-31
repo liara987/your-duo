@@ -2,15 +2,10 @@
 import { useDisplay } from 'vuetify'
 import { ref } from 'vue'
 import data from '../../database.json'
-
-interface cardType {
-  title: string
-  src: string
-  description: string
-}
+import type {CardType} from '@/types/CardType'
 
 const model = defineModel()
-const cards = ref<cardType[]>(data)
+const cards = ref<CardType[]>(data)
 const { smAndUp } = useDisplay()
 </script>
 
