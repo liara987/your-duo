@@ -1,5 +1,27 @@
 # your-duo
 
+## screenshots
+
+### home mobile
+
+![home-mobile](./screens/home-mobile.png)
+
+### home tablet
+
+![home-tablet](./screens/home-tablet.png)
+
+### home desktop
+
+![home-desktop](./screens/home-desktop.png)
+
+### form mobile
+
+![form-mobile](./screens/form-mobile.png)
+
+### form desktop
+
+![form-desktop](./screens/form-desktop.png)
+
 ## Project Setup
 
 ```sh
@@ -29,28 +51,6 @@ npm run test:unit
 ```sh
 npm run test:e2e:dev
 ```
-
-## screenshots
-
-### home mobile
-
-![home-mobile](./screens/home-mobile.png)
-
-### home tablet
-
-![home-tablet](./screens/home-tablet.png)
-
-### home desktop
-
-![home-desktop](./screens/home-desktop.png)
-
-### form mobile
-
-![form-mobile](./screens/form-mobile.png)
-
-### form desktop
-
-![form-desktop](./screens/form-desktop.png)
 
 ## What this project have
 
