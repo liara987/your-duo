@@ -1,7 +1,5 @@
 # your-duo
 
-## screenshots
-
 ### home mobile
 
 ![home-mobile](./screens/home-mobile.png)
