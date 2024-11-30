@@ -1,12 +1,9 @@
-# your-duo
+# Your-Duo
+Your-Duo é uma aplicação web em Vue desenvolvida para conectar jogadores que compartilham interesses em jogos semelhantes. O objetivo é promover a interação e a formação de equipes, facilitando a comunicação e a conexão entre gamers de diferentes níveis e interesses. A interface é responsiva, e pode ser acessada em qualquer dispositivo.
 
 ### home mobile
 
 ![home-mobile](./screens/home-mobile.png)
-
-### home tablet
-
-![home-tablet](./screens/home-tablet.png)
 
 ### home desktop
 
@@ -20,39 +17,9 @@
 
 ![form-desktop](./screens/form-desktop.png)
 
-## Project Setup
+## Documentação do avanço do projeto
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-## What this project have
-
-### Components
+### Componentes
 
 - [x] Logo
 - [x] Carousel
@@ -65,13 +32,13 @@ npm run test:e2e:dev
 - [ ] Add a post to list
 - [ ] List how much posts have
 
-### Pages
+### Páginas
 
 - [X] Home page
 - [ ] Post detail page
 - [ ] Profile page
 
-### Unit Test
+### Testes unitários
 
 - [ ] Logo
   - [ ] Should be created
